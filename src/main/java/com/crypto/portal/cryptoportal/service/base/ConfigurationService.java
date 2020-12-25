@@ -1,6 +1,6 @@
-package com.example.cryptomodule.service.base;
+package com.crypto.portal.cryptoportal.service.base;
 
-import com.example.cryptomodule.entity.ConfigurationEntity;
+import com.crypto.portal.cryptoportal.entity.ConfigurationEntity;
 
 import java.util.Map;
 

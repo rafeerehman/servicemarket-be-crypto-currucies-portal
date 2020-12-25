@@ -1,7 +1,7 @@
-package com.example.cryptomodule.security;
+package com.crypto.portal.cryptoportal.security;
 
-import com.example.cryptomodule.util.JwtTokenUtil;
-import com.example.cryptomodule.util.SecurityConstants;
+import com.crypto.portal.cryptoportal.util.JwtTokenUtil;
+import com.crypto.portal.cryptoportal.util.SecurityConstants;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

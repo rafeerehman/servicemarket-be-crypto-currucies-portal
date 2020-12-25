@@ -1,4 +1,4 @@
-package com.example.cryptomodule.security;
+package com.crypto.portal.cryptoportal.security;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

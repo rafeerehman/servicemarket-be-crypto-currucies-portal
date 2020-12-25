@@ -1,9 +1,9 @@
-package com.example.cryptomodule.service.impl;
+package com.crypto.portal.cryptoportal.service.impl;
 
 
-import com.example.cryptomodule.entity.ConfigurationEntity;
-import com.example.cryptomodule.repository.ConfigurationRepository;
-import com.example.cryptomodule.service.base.ConfigurationService;
+import com.crypto.portal.cryptoportal.service.base.ConfigurationService;
+import com.crypto.portal.cryptoportal.entity.ConfigurationEntity;
+import com.crypto.portal.cryptoportal.repository.ConfigurationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

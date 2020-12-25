@@ -1,7 +1,7 @@
-package com.example.cryptomodule.util;
+package com.crypto.portal.cryptoportal.util;
 
 
-import com.example.cryptomodule.service.base.ConfigurationService;
+import com.crypto.portal.cryptoportal.service.base.ConfigurationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

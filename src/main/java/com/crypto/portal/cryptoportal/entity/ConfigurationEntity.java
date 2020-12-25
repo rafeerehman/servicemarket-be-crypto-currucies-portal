@@ -1,4 +1,4 @@
-package com.example.cryptomodule.entity;
+package com.crypto.portal.cryptoportal.entity;
 
 
 import lombok.*;

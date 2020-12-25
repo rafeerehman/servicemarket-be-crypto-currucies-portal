@@ -1,8 +1,8 @@
-package com.example.cryptomodule.security;
+package com.crypto.portal.cryptoportal.security;
 
 
-import com.example.cryptomodule.entity.UserEntity;
-import com.example.cryptomodule.repository.UserRepository;
+import com.crypto.portal.cryptoportal.entity.UserEntity;
+import com.crypto.portal.cryptoportal.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

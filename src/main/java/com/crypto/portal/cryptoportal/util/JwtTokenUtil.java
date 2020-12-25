@@ -1,4 +1,4 @@
-package com.example.cryptomodule.util;
+package com.crypto.portal.cryptoportal.util;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

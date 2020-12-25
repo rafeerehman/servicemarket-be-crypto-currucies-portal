@@ -1,6 +1,6 @@
-package com.example.cryptomodule.repository;
+package com.crypto.portal.cryptoportal.repository;
 
-import com.example.cryptomodule.entity.UserEntity;
+import com.crypto.portal.cryptoportal.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
