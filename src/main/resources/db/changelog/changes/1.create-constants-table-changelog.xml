@@ -9,9 +9,9 @@
 
         <sql>
 
-           CREATE SEQUENCE constants_seq;
+           CREATE SEQUENCE constants_seq1;
 
-            CREATE TABLE configuration ( code VARCHAR(500) NOT NULL , message_english VARCHAR(50000) NOT NULL , id INT NOT NULL DEFAULT NEXTVAL ('constants_seq') , PRIMARY KEY (id)) ;
+            CREATE TABLE configuration ( code VARCHAR(500) NOT NULL , message_english VARCHAR(50000) NOT NULL , id INT NOT NULL DEFAULT NEXTVAL ('constants_seq1') , PRIMARY KEY (id)) ;
 
         </sql>
 
