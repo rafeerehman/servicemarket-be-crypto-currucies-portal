@@ -37,7 +37,7 @@ public class CryptoApiBusinessImpl implements CryptoApiBusiness {
         header.add("ContentType", "application/json");
 
 
-        List response = (List) utility.callGetJson("https://api.nomics.com/v1/exchange-rates?key=d0a7ba4aa83fa093b777e3085fa51a99", ArrayList.class, header);
+        List response = (List) utility.callGetJson(configurationUtil.getMessage(Constants.GET_CRYPTO_NAMES_AND_RATES_NOMICS_API_URL)+configurationUtil.getMessage(Constants.NOMICS_API_ACCESS_KEY), ArrayList.class, header);
         List<CryptoNamesApiJsonResponse> jsonResponseList = null;
         List<String> cryptoList = new ArrayList<>();
         if(response != null){
@@ -64,7 +64,7 @@ public class CryptoApiBusinessImpl implements CryptoApiBusiness {
         HttpHeaders header = new HttpHeaders();
         header.add("ContentType", "application/json");
 
-        List response = (List) utility.callGetJson("https://api.nomics.com/v1/exchange-rates?key=d0a7ba4aa83fa093b777e3085fa51a99", ArrayList.class, header);
+        List response = (List) utility.callGetJson(configurationUtil.getMessage(Constants.GET_CRYPTO_NAMES_AND_RATES_NOMICS_API_URL)+configurationUtil.getMessage(Constants.NOMICS_API_ACCESS_KEY), ArrayList.class, header);
         List<CryptoNamesApiJsonResponse> jsonResponseList = null;
         List<CryptoRatesDto> cryptoList = new ArrayList<>();
         if(response != null){

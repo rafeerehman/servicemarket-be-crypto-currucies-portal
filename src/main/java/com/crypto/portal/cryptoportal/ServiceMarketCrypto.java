@@ -1,5 +1,7 @@
 package com.crypto.portal.cryptoportal;
 
+import com.crypto.portal.cryptoportal.util.ConfigurationUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -7,10 +9,14 @@ import org.springframework.http.client.BufferingClientHttpRequestFactory;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
+import javax.annotation.PostConstruct;
 import java.util.Collections;
 
 @SpringBootApplication
 public class ServiceMarketCrypto {
+
+	@Autowired
+	ConfigurationUtil configurationUtil;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ServiceMarketCrypto.class, args);
@@ -29,6 +35,11 @@ public class ServiceMarketCrypto {
 		}));
 
 		return restClient;
+	}
+
+	@PostConstruct
+	private void init() {
+		configurationUtil.updateConstants();
 	}
 
 }

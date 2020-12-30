@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="Inaam" id="23">
+
+        <sql>
+
+
+            Insert into configuration (code, message_english) values ('04000', 'd0a7ba4aa83fa093b777e3085fa51a99');
+            Insert into configuration (code, message_english) values ('05000', 'https://api.nomics.com/v1/exchange-rates?key=');
+
+
+        </sql>
+
+    </changeSet>
+</databaseChangeLog>
