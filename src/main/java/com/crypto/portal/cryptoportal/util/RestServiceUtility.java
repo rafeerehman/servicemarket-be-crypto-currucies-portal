@@ -24,7 +24,7 @@ public class RestServiceUtility {
         try{
             ObjectMapper mapper = new ObjectMapper();
             restTemplate = new RestTemplate();
-            Object obj = responseClass.newInstance();
+            Object obj = responseClass.getDeclaredConstructor().newInstance();
             HttpEntity<?> entity = new HttpEntity<>(requestClass, headers);
             String requestJson = mapper.writeValueAsString(entity.getBody());
             logger.info("POST Request ::::::: "+requestJson);
