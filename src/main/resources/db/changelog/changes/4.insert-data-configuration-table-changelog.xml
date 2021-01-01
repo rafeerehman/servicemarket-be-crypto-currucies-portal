@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="Inaam" id="24">
+
+        <sql>
+
+
+            Insert into configuration (code, message_english) values ('06000', '3A6C0FDA-BD54-4D72-B96C-5A0152809198');
+            Insert into configuration (code, message_english) values ('07000', 'https://rest.coinapi.io/v1/exchanges');
+            Insert into configuration (code, message_english) values ('08000', 'https://rest.coinapi.io/v1/exchanges/icons/32');
+
+
+        </sql>
+
+    </changeSet>
+</databaseChangeLog>

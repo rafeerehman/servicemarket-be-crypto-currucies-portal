@@ -13,5 +13,4 @@ public class ExchangeCompaniesListJsonResponse {
     private String name;
     @JsonProperty("data_start")
     private String dataStart;
-    private String iconUrl;
 }

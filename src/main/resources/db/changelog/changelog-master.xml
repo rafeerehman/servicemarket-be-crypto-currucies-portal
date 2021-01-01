@@ -10,5 +10,6 @@
     <include file="/db/changelog/changes/1.create-constants-table-changelog.xml"/>
     <include file="/db/changelog/changes/2.insert-data-configuration-table-changelog.xml"/>
     <include file="/db/changelog/changes/3.insert-data-configuration-table-changelog.xml"/>
+    <include file="/db/changelog/changes/4.insert-data-configuration-table-changelog.xml"/>
 
 </databaseChangeLog>

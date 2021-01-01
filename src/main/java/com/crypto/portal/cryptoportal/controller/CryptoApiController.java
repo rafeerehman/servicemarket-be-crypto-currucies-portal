@@ -30,5 +30,12 @@ public class CryptoApiController {
 
     }
 
+    @PostMapping("/exchanges")
+    public ResponseEntity<BaseResponse> getExchangesCompanies(@Valid @RequestBody BaseRequest request){
+
+        return ResponseEntity.ok(business.getExchangeCompanies(request));
+
+    }
+
 
 }
