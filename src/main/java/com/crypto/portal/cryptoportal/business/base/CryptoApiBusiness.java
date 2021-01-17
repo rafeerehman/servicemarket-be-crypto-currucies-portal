@@ -8,4 +8,5 @@ public interface CryptoApiBusiness {
 
     BaseResponse getCryptoNames(BaseRequest request);
     BaseResponse getCryptoRates(BaseRequest request);
+    BaseResponse getExchangeCompanies(BaseRequest request);
 }
