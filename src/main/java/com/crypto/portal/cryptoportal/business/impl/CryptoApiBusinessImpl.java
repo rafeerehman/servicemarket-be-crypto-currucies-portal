@@ -141,9 +141,9 @@ public class CryptoApiBusinessImpl implements CryptoApiBusiness {
         header.add("ContentType", "application/json");
 
         List response = (List) utility.callGetJson("https://api.nomics.com/v1/currencies/sparkline?key=d0a7ba4aa83fa093b777e3085fa51a99&ids=BTC&start=2019-11-25T00%3A00%3A00Z", CryptoWeeklyRatesResponse.class, header);
- //       List response = (List) utility.callGetJson("https://api.nomics.com/v1/currencies/sparkline?key=d0a7ba4aa83fa093b777e3085fa51a99&ids="+cryptoName+"&start="+date+"T00%3A00%3A00Z", ArrayList.class, header);
-       // System.out.println("Url:"+"https://api.nomics.com/v1/currencies/sparkline?key=d0a7ba4aa83fa093b777e3085fa51a99&ids="+cryptoName+"&start="+date+"T00%3A00%3A00Z");
-        System.out.println("initial response:"+response);
+        //       List response = (List) utility.callGetJson("https://api.nomics.com/v1/currencies/sparkline?key=d0a7ba4aa83fa093b777e3085fa51a99&ids="+cryptoName+"&start="+date+"T00%3A00%3A00Z", ArrayList.class, header);
+        // System.out.println("Url:"+"https://api.nomics.com/v1/currencies/sparkline?key=d0a7ba4aa83fa093b777e3085fa51a99&ids="+cryptoName+"&start="+date+"T00%3A00%3A00Z");
+        System.out.println("initial response:" + response);
         List<CryptoWeeklyRatesResponse> jsonResponseList = null;
         List<CryptoWeeklyRatesDto> cryptoList = new ArrayList<>();
         if (response != null) {
@@ -157,7 +157,7 @@ public class CryptoApiBusinessImpl implements CryptoApiBusiness {
 //                }
                 cryptoList.add(CryptoWeeklyRatesDto.builder().currency(cryptoWeeklyRatesDto.getCurrency()).timestamp(String.valueOf(cryptoWeeklyRatesDto.getTimestamps())).prices(String.valueOf(cryptoWeeklyRatesDto.getPrices())).build());
             }
-            System.out.println("response: "+cryptoList);
+            System.out.println("response: " + cryptoList);
             CryptoWeeklyRatesResponse cryptoWeeklyRatesResponse = CryptoWeeklyRatesResponse.builder().timestamps(cryptoList).prices(cryptoList).build();
 
             return BaseResponse.builder().responseCode(Constants.SUCCESS_RESPONSE_CODE)
@@ -168,59 +168,60 @@ public class CryptoApiBusinessImpl implements CryptoApiBusiness {
                     .responseMessage(configurationUtil.getMessage(Constants.SUCCESS_RESPONSE_CODE)).response(null).build();
         }
 
-    @Override
-    public BaseResponse getExchangeCompanies(BaseRequest request) {
-        ObjectMapper mapper = new ObjectMapper();
+    }
 
-        HttpHeaders header = new HttpHeaders();
-        header.add("ContentType", "application/json");
-        header.add("X-CoinAPI-Key", configurationUtil.getMessage(Constants.COIN_API_ACCESS_KEY));
+        @Override
+        public BaseResponse getExchangeCompanies(BaseRequest request) {
+            ObjectMapper mapper = new ObjectMapper();
 
-        List jsonResponse = (List) utility.callGetJson(configurationUtil.getMessage(Constants.GET_EXCHANGE_COMPANIES_AND_WEBSITE_COIN_API_URL), ExchangeCompaniesListJsonResponse.class, header);
-        List<ExchangeCompaniesListJsonResponse> jsonResponseList = null;
-        if(jsonResponse !=null){
+            HttpHeaders header = new HttpHeaders();
+            header.add("ContentType", "application/json");
+            header.add("X-CoinAPI-Key", configurationUtil.getMessage(Constants.COIN_API_ACCESS_KEY));
 
-            jsonResponseList = mapper.convertValue(jsonResponse, new TypeReference<List<ExchangeCompaniesListJsonResponse>>(){});
+            List jsonResponse = (List) utility.callGetJson(configurationUtil.getMessage(Constants.GET_EXCHANGE_COMPANIES_AND_WEBSITE_COIN_API_URL), ExchangeCompaniesListJsonResponse.class, header);
+            List<ExchangeCompaniesListJsonResponse> jsonResponseList = null;
+            if(jsonResponse !=null){
 
-            List<ExchangeCompaniesResponse> response = new ArrayList<>();
-            List<ExchangeCompaniesIconListJsonResponse> iconsListJsonResponse = getExchangeCompaniesIcon(request);
-            for(ExchangeCompaniesListJsonResponse companiesJsonResponse : jsonResponseList){
-                for(ExchangeCompaniesIconListJsonResponse iconJsonResponse: iconsListJsonResponse){
-                    if(companiesJsonResponse.getExchangeId().equals(iconJsonResponse.getExchangeId())){
-                        response.add(ExchangeCompaniesResponse.builder()
-                                .exchangeId(companiesJsonResponse.getExchangeId())
-                                .name(companiesJsonResponse.getName())
-                                .website(companiesJsonResponse.getWebsite())
-                                .dataStart(companiesJsonResponse.getDataStart())
-                                .iconUrl(iconJsonResponse.getUrl())
-                                .build());
+                jsonResponseList = mapper.convertValue(jsonResponse, new TypeReference<List<ExchangeCompaniesListJsonResponse>>(){});
+
+                List<ExchangeCompaniesResponse> response = new ArrayList<>();
+                List<ExchangeCompaniesIconListJsonResponse> iconsListJsonResponse = getExchangeCompaniesIcon(request);
+                for(ExchangeCompaniesListJsonResponse companiesJsonResponse : jsonResponseList){
+                    for(ExchangeCompaniesIconListJsonResponse iconJsonResponse: iconsListJsonResponse){
+                        if(companiesJsonResponse.getExchangeId().equals(iconJsonResponse.getExchangeId())){
+                            response.add(ExchangeCompaniesResponse.builder()
+                                    .exchangeId(companiesJsonResponse.getExchangeId())
+                                    .name(companiesJsonResponse.getName())
+                                    .website(companiesJsonResponse.getWebsite())
+                                    .dataStart(companiesJsonResponse.getDataStart())
+                                    .iconUrl(iconJsonResponse.getUrl())
+                                    .build());
+                        }
                     }
                 }
+                return BaseResponse.builder().responseCode(Constants.SUCCESS_RESPONSE_CODE)
+                        .responseMessage(configurationUtil.getMessage(Constants.SUCCESS_RESPONSE_CODE)).response(response).build();
+            }else{
+                return BaseResponse.builder().responseCode(Constants.SUCCESS_RESPONSE_CODE)
+                        .responseMessage(configurationUtil.getMessage(Constants.SUCCESS_RESPONSE_CODE)).response(null).build();
             }
-            return BaseResponse.builder().responseCode(Constants.SUCCESS_RESPONSE_CODE)
-                    .responseMessage(configurationUtil.getMessage(Constants.SUCCESS_RESPONSE_CODE)).response(response).build();
-        }else{
-            return BaseResponse.builder().responseCode(Constants.SUCCESS_RESPONSE_CODE)
-                    .responseMessage(configurationUtil.getMessage(Constants.SUCCESS_RESPONSE_CODE)).response(null).build();
         }
-    }
 
-    public List<ExchangeCompaniesIconListJsonResponse> getExchangeCompaniesIcon(BaseRequest request) {
-        ObjectMapper mapper = new ObjectMapper();
+        public List<ExchangeCompaniesIconListJsonResponse> getExchangeCompaniesIcon(BaseRequest request) {
+            ObjectMapper mapper = new ObjectMapper();
 
-        HttpHeaders header = new HttpHeaders();
-        header.add("ContentType", "application/json");
-        header.add("X-CoinAPI-Key", configurationUtil.getMessage(Constants.COIN_API_ACCESS_KEY));
+            HttpHeaders header = new HttpHeaders();
+            header.add("ContentType", "application/json");
+            header.add("X-CoinAPI-Key", configurationUtil.getMessage(Constants.COIN_API_ACCESS_KEY));
 
-        List response = (List) utility.callGetJson(configurationUtil.getMessage(Constants.GET_EXCHANGE_COMPANIES_ICONS_COIN_32X32_API_URL), ExchangeCompaniesIconListJsonResponse.class, header);
-        List<ExchangeCompaniesIconListJsonResponse> jsonResponseList = null;
-        if(response !=null){
-            jsonResponseList = mapper.convertValue(response, new TypeReference<List<ExchangeCompaniesIconListJsonResponse>>(){});
-            return jsonResponseList;
-        }else{
-            return null;
+            List response = (List) utility.callGetJson(configurationUtil.getMessage(Constants.GET_EXCHANGE_COMPANIES_ICONS_COIN_32X32_API_URL), ExchangeCompaniesIconListJsonResponse.class, header);
+            List<ExchangeCompaniesIconListJsonResponse> jsonResponseList = null;
+            if(response !=null){
+                jsonResponseList = mapper.convertValue(response, new TypeReference<List<ExchangeCompaniesIconListJsonResponse>>(){});
+                return jsonResponseList;
+            }else{
+                return null;
+            }
         }
-    }
-    }
 
 }
