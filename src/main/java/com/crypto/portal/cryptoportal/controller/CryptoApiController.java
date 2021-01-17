@@ -31,6 +31,13 @@ public class CryptoApiController {
 
     }
 
+    @PostMapping("/exchanges")
+    public ResponseEntity<BaseResponse> getExchangesCompanies(@Valid @RequestBody BaseRequest request){
+
+        return ResponseEntity.ok(business.getExchangeCompanies(request));
+
+    }
+
     @PostMapping(value = "/search/{key}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BaseResponse> getCurrencyInfoByValue(@Valid @RequestBody BaseRequest request,@PathVariable String key){
 
