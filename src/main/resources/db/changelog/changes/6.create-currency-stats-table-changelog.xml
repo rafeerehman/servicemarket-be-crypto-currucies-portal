@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="Inaam" id="6">
+
+        <sql>
+
+            CREATE SEQUENCE currency_stats_seq;
+
+            CREATE TABLE currency_stats (
+
+             currency_id INT(50) NOT NULL,
+            changes_24h VARCHAR(50)  NOT NULL,
+            changes_7d VARCHAR(50) NOT NULL,
+            changes_30d VARCHAR(50) NOT NULL,
+            changes_1Y  VARCHAR(50) NOT NULL,
+            all_time_high VARCHAR(50) NOT NULL,
+            all_time_low VARCHAR(50) NOT NULL,
+            foreign key(currency_id) references currency (id),
+
+            id INT NOT NULL DEFAULT NEXTVAL ('currency_stats_seq') , PRIMARY KEY (id)
+            ) ;
+
+        </sql>
+
+    </changeSet>
+</databaseChangeLog>
