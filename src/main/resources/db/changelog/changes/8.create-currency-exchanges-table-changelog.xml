@@ -13,9 +13,9 @@
 
             CREATE TABLE currency_exchanges (
 
-            currency_id    INT(50) NOT NULL,
+            currency_id    INT NOT NULL,
             exchange_name  VARCHAR(50) NOT NULL,
-            exchange_url   VARCHAR(100) NOT NULL,
+            exchange_url   VARCHAR(5000) NOT NULL,
             foreign key(currency_id)  references currency(id),
 
             id INT NOT NULL DEFAULT NEXTVAL ('currency_exchanges_seq') , PRIMARY KEY (id)

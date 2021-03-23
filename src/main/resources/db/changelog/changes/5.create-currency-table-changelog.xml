@@ -16,14 +16,12 @@
                                     market_cap VARCHAR(50) NOT NULL ,
                                     price VARCHAR(50) NOT NULL ,
                                     circ_supply VARCHAR(50) NOT NULL ,
-                                    block_chain VARCHAR(50) NOT NULL ,
-                                    rank INT(50) NOT NULL ,
-                                    logo_url VARCHAR(50) NOT NULL ,
+                                    block_chain VARCHAR(50) NULL ,
+                                    rank INT NOT NULL ,
+                                    logo_url VARCHAR(5000) NOT NULL ,
                                     date_added date NOT NULL ,
-                                    description text NOT NULL,
-
-                                  id INT NOT NULL DEFAULT NEXTVAL ('currency_seq') , PRIMARY KEY (id)
-            ) ;
+                                    description text NULL,
+                                  id INT NOT NULL DEFAULT NEXTVAL ('currency_seq') , PRIMARY KEY (id)) ;
 
         </sql>
 

@@ -13,7 +13,7 @@
 
             CREATE TABLE currency_stats (
 
-             currency_id INT(50) NOT NULL,
+             currency_id INT NOT NULL,
             changes_24h VARCHAR(50)  NOT NULL,
             changes_7d VARCHAR(50) NOT NULL,
             changes_30d VARCHAR(50) NOT NULL,
