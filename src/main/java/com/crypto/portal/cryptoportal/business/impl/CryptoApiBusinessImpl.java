@@ -131,7 +131,7 @@ public class CryptoApiBusinessImpl implements CryptoApiBusiness {
             return  BaseResponse.builder().responseCode(Constants.SUCCESS_RESPONSE_CODE)
                     .responseMessage(configurationUtil.getMessage(Constants.SUCCESS_RESPONSE_CODE)).response(null).build();
         }
-        }
+    }
 
     @Override
     public BaseResponse getCryptoWeeklyRates(BaseRequest request, String cryptoName, String date) {
