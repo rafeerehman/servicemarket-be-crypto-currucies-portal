@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="Inaam" id="5">
+
+        <sql>
+
+            CREATE SEQUENCE currency_seq;
+
+            CREATE TABLE currency ( coin_name VARCHAR(50) NOT NULL ,
+                                    symbol VARCHAR(50) NOT NULL ,
+                                    market_cap VARCHAR(50) NOT NULL ,
+                                    price VARCHAR(50) NOT NULL ,
+                                    circ_supply VARCHAR(50) NOT NULL ,
+                                    block_chain VARCHAR(50) NULL ,
+                                    rank INT NOT NULL ,
+                                    logo_url VARCHAR(5000) NOT NULL ,
+                                    date_added date NOT NULL ,
+                                    description text NULL,
+                                  id INT NOT NULL DEFAULT NEXTVAL ('currency_seq') , PRIMARY KEY (id)) ;
+
+        </sql>
+
+    </changeSet>
+</databaseChangeLog>

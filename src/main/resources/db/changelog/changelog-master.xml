@@ -11,5 +11,10 @@
     <include file="/db/changelog/changes/2.insert-data-configuration-table-changelog.xml"/>
     <include file="/db/changelog/changes/3.insert-data-configuration-table-changelog.xml"/>
     <include file="/db/changelog/changes/4.insert-data-configuration-table-changelog.xml"/>
+    <include file="/db/changelog/changes/5.create-currency-table-changelog.xml"/>
+    <include file="/db/changelog/changes/6.create-currency-stats-table-changelog.xml"/>
+    <include file="/db/changelog/changes/7.create-currency-wallets-table-changelog.xml"/>
+    <include file="/db/changelog/changes/8.create-currency-exchanges-table-changelog.xml"/>
+    <include file="/db/changelog/changes/9.create-currency-news-table-changelog.xml"/>
 
 </databaseChangeLog>
