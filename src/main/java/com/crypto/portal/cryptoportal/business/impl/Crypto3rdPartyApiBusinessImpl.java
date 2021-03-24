@@ -7,6 +7,7 @@ import com.crypto.portal.cryptoportal.dto.CurrencyInfoDto;
 import com.crypto.portal.cryptoportal.request.BaseRequest;
 import com.crypto.portal.cryptoportal.response.BaseResponse;
 import com.crypto.portal.cryptoportal.response.CurrencyInfoResponse;
+import com.crypto.portal.cryptoportal.service.base.Crypto3rdPartyApiService;
 import com.crypto.portal.cryptoportal.util.ConfigurationUtil;
 import com.crypto.portal.cryptoportal.util.Constants;
 import com.crypto.portal.cryptoportal.util.RestServiceUtility;
@@ -27,6 +28,9 @@ public class Crypto3rdPartyApiBusinessImpl implements Crypto3rdPartyApiBusiness 
 
     @Autowired
     ConfigurationUtil configurationUtil;
+
+    @Autowired
+    Crypto3rdPartyApiService crypto3rdPartyApiService;
 
     @Override
     public BaseResponse getCryptoCurrencies(BaseRequest request) {
@@ -55,20 +59,15 @@ public class Crypto3rdPartyApiBusinessImpl implements Crypto3rdPartyApiBusiness 
                     }
                 }
 
-//                cryptoList.add(currencyInfoResponse.getDescription());
-//                cryptoList.add(currencyInfoResponse.getWebsite_url());
-
             }
 
 
-            CurrencyInfoResponse currencyInfoResponse = CurrencyInfoResponse.builder().description(cryptoList.get(0)).url(cryptoList.get(1)).build();
-            return BaseResponse.builder().responseCode(Constants.SUCCESS_RESPONSE_CODE)
-                    .responseMessage(configurationUtil.getMessage(Constants.SUCCESS_RESPONSE_CODE)).response(currencyInfoResponse).build();
+            return crypto3rdPartyApiService.saveCurrenciesInfo(jsonResponseList);
 
         }
         else{
-            return  BaseResponse.builder().responseCode(Constants.SUCCESS_RESPONSE_CODE)
-                    .responseMessage(configurationUtil.getMessage(Constants.SUCCESS_RESPONSE_CODE)).response(null).build();
+            return  BaseResponse.builder().responseCode(Constants.FAILUARE_RESPNSE_CODE)
+                    .responseMessage(configurationUtil.getMessage(Constants.FAILUARE_RESPNSE_CODE)).response(null).build();
         }
     }
 

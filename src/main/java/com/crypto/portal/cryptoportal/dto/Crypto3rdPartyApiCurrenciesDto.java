@@ -1,15 +1,22 @@
 package com.crypto.portal.cryptoportal.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.sql.Date;
 
 @JsonSerialize
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Crypto3rdPartyApiCurrenciesDto {
 
     private String currency;
@@ -19,7 +26,10 @@ public class Crypto3rdPartyApiCurrenciesDto {
     private String circulating_supply;
     private String rank;
     private String logo_url;
-    private String first_candle;
+
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private Date first_candle;
+
     private String high;
     private String id;
     private String description;
@@ -35,6 +45,11 @@ public class Crypto3rdPartyApiCurrenciesDto {
 
 }
 
+@JsonSerialize
+@JsonIgnoreProperties(ignoreUnknown = true)
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 class PriceChange{
     private String price_change;
 }
