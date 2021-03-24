@@ -41,7 +41,6 @@ public class Crypto3rdPartyApiBusinessImpl implements Crypto3rdPartyApiBusiness 
 
         List response = (List) utility.callGetJson("https://api.nomics.com/v1/currencies/ticker?key=d0a7ba4aa83fa093b777e3085fa51a99", ArrayList.class, header);
         List<Crypto3rdPartyApiCurrenciesDto> jsonResponseList = null;
-        List<String> cryptoList = new ArrayList<>();
 
         if (response != null) {
             jsonResponseList = mapper.convertValue(response, new TypeReference<List<Crypto3rdPartyApiCurrenciesDto>>() {});
